@@ -39,7 +39,7 @@ public class Main {
         String uuid = InputUtil.getString("Enter user UUID");
         try {
             UserResponseDto user = userController.getUserByUuid(uuid).data();
-            ViewUtil.displayUser(user);
+            ViewUtil.displayUsers(List.of(user));
         } catch (Exception e) {
             ViewUtil.displayError(e.getMessage());
         }
@@ -59,7 +59,7 @@ public class Main {
             UpdateRequestDto updateRequestDto = new UpdateRequestDto(name, email, password, profile);
             UserResponseDto response = userController.updateUserByUuid(uuid, updateRequestDto).data();
             ViewUtil.displayMessage("User updated successfully!");
-            ViewUtil.displayUser(response);
+            ViewUtil.displayUsers(List.of(response));
         } catch (Exception e) {
             ViewUtil.displayError(e.getMessage());
         }

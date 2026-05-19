@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserResponseDto createUser(CreateUserDto createUserDto) {
         User user = UserMapper.fromCreateUserDto(createUserDto);
-        userDao.save(user);
-        UserResponseDto userResponseDto = UserMapper.fromUserToUserResponseDto(user);
+        User savedUser = userDao.save(user);
+        UserResponseDto userResponseDto = UserMapper.fromUserToUserResponseDto(savedUser);
         return userResponseDto;
     }
 
